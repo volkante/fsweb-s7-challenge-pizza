@@ -1,0 +1,217 @@
+/* Reset Css */
+
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* Reset CSS Sonu */
+
+/*********************************Header**************************/
+
+header {
+  background-color: #ce2829;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  gap: 24px;
+}
+
+header h1 {
+  font-size: 36px;
+  color: white;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+header nav a {
+  background-color: #ce2829;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.active {
+  font-weight: bold;
+}
+
+/************************************** order-page ***************************************/
+
+section.main-section {
+  width: 50%;
+  margin: 48px auto 36px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/*********************************************** description **********************************/
+
+.pizza-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pizza-info .price {
+  font-weight: bold;
+  font-size: 24px;
+  flex-basis: 400px;
+}
+
+input[type="radio"] {
+  margin-right: 4px;
+}
+
+/***************************************** pizzaSize-Crust ********************************************/
+
+.pizzaSize-Crust {
+  display: flex;
+  gap: 300px;
+}
+
+.size form {
+  display: flex;
+  flex-direction: column;
+}
+
+/******************************************* toppings ****************************************************/
+
+.toppings form {
+  display: flex;
+  column-gap: 60px;
+  row-gap: 12px;
+  flex-wrap: wrap;
+}
+
+.toppings .checkbox {
+  width: 120px;
+}
+
+input[type="checkbox"] {
+  margin-right: 4px;
+}
+
+/************************************** NameInput *************************************************/
+
+.nameInput {
+  margin-top: 36px;
+}
+
+/***********************************quantity-summary************************************************/
+
+.quantity-summary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.quantity {
+  display: flex;
+  align-items: baseline;
+}
+
+.custom-button {
+  background-color: #fdc913;
+  border-color: #fdc913;
+  color: #000;
+}
+
+.custom-button:hover {
+  background-color: #e0b312;
+  border-color: #e0b312;
+  color: #000;
+}
+
+.custom-button:disabled,
+.custom-button[disabled] {
+  background-color: #f0d77e;
+  border-color: #f0d77e;
+  color: #000;
+}
+
+.quantity p {
+  margin-right: 4px;
+}
+
+.summaryAndButton {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  border: 1px solid #ccc;
+  border-radius: 2%;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tumToplam {
+  color: #ce2829;
+  font-weight: 600;
+}
+
+.summary span {
+  margin-left: 4px;
+}
+
+.submitButton {
+  width: 360px;
+  background-color: #fdc913;
+  border-color: #fdc913;
+  color: #000;
+}
+
+.submitButton:hover {
+  background-color: #e0b312;
+  border-color: #e0b312;
+  color: #000;
+}
+
+.submitButton:disabled,
+.submitButton[disabled] {
+  background-color: #f0d77e;
+  border-color: #f0d77e;
+  color: #000;
+}
