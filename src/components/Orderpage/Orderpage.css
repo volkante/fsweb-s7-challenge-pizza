@@ -99,10 +99,6 @@ section.main-section {
   flex-basis: 400px;
 }
 
-input[type="radio"] {
-  margin-right: 4px;
-}
-
 /***************************************** pizzaSize-Crust ********************************************/
 
 .pizzaSize-Crust {
@@ -113,6 +109,10 @@ input[type="radio"] {
 .size form {
   display: flex;
   flex-direction: column;
+}
+
+input[type="radio"] {
+  margin-right: 4px;
 }
 
 /******************************************* toppings ****************************************************/
@@ -185,10 +185,12 @@ input[type="checkbox"] {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding-left: 4px;
 }
 
 .tumToplam {
-  color: #ce2829;
+  color: #1c6dce;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -214,4 +216,12 @@ input[type="checkbox"] {
   background-color: #f0d77e;
   border-color: #f0d77e;
   color: #000;
+}
+
+.errorMessages {
+  padding-left: 4px;
+}
+
+.errorMessages p {
+  margin-bottom: 0.5rem;
 }

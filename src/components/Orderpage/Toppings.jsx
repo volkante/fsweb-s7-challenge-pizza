@@ -30,8 +30,8 @@ export default function Toppings({ onChange }) {
             topping,
             index //map ile yukarıda kendi oluşturduğum toppings arr'ı map'liyoruz.
           ) => (
-            <div className="checkbox" key={index + 1}>
-              <label key={index}>
+            <div className="checkbox" key={index}>
+              <label>
                 <input
                   type="checkbox"
                   name="addedToppings"

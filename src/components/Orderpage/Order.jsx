@@ -27,17 +27,10 @@ const initialData = {
   totalPrice: 0,
 };
 
-const errorMessages = {
-  priceToppings: "En az 4 adet en fazla 10 adet malzeme seçebilirsiniz",
-  pizzaSize: "Lütfen pizza boyutunu seçiniz",
-  crust: "Lütfen ince hamur mu kalın hamur mu istediğinizi belirtiniz",
-  fullName: "İsminiz en az 3 karakterden oluşabilir",
-};
-
-const errors = {
-  priceToppings: false,
+const initialErrorData = {
   pizzaSize: false,
   crust: false,
+  toppings: false,
   fullName: false,
 };
 
@@ -45,7 +38,7 @@ export default function Order() {
   const [pizzaData, setPizzaData] = useState(initialData);
   const [pizzaCount, setPizzaCount] = useState(1); //pizza sayısını ayrı state'de tuttum. Denemek için. Muhtemelen
   //mevcut state'de pizzaData.pizzaCount da olurdu. Avantajı, dezavantajı?
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState(initialErrorData);
   const [isValid, setIsValid] = useState(false);
 
   let history = useHistory(); //submit başarılıysa success sayfasına yönlendirmek için useHistory kullanıyoruz.
@@ -59,6 +52,7 @@ export default function Order() {
         [name]: value,
         price: value === "Küçük Boy" ? 100 : value === "Orta Boy" ? 150 : 200,
       });
+      setErrors({ ...errors, pizzaSize: true });
     } else if (name === "addedToppings") {
       let newToppingsArr;
       const oldToppingsArr = pizzaData[name];
@@ -67,9 +61,29 @@ export default function Order() {
       } else {
         newToppingsArr = [...oldToppingsArr, value];
       }
+      if (newToppingsArr.length > 3 && newToppingsArr.length < 11) {
+        //toppingslerin seçim sayısına göre error yönetimi
+        setErrors({ ...errors, toppings: true });
+      } else {
+        setErrors({ ...errors, toppings: false });
+      }
       setPizzaData({ ...pizzaData, [name]: newToppingsArr });
     } else {
       //(name === "crust" || name === "fullName" || name === "note") giriyor bu else'e!
+      //crust ve fullname için error mesajları yönetimi için if else'ler:
+      if (name === "crust") {
+        if (value) {
+          setErrors({ ...errors, crust: true });
+        } else if (value === "") {
+          return;
+        }
+      } else if (name === "fullName") {
+        if (value.replaceAll(" ", "").length >= 3) {
+          setErrors({ ...errors, fullName: true });
+        } else {
+          setErrors({ ...errors, fullName: false });
+        }
+      }
       setPizzaData({ ...pizzaData, [name]: value });
     }
   }
@@ -109,7 +123,7 @@ export default function Order() {
     axios
       .post("https://reqres.in/api/pizza", pizzaData)
       .then((res) => {
-        history.push("/success");
+        setTimeout(() => history.push("/success"), 1000);
         console.log(res.data);
       })
       .catch((err) => console.log(err));
@@ -133,6 +147,7 @@ export default function Order() {
             <Summary
               priceToppings={pizzaData.priceToppings}
               totalPrice={pizzaData.totalPrice}
+              errors={errors}
             />
             <div>
               <Button
